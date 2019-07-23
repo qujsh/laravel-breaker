@@ -1,0 +1,29 @@
+{
+    "name": "qujsh/laravel-breaker",
+    "type": "composer-plugin",
+    "keywords": [
+        "qujsh",
+        "laravel",
+        "breaker"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "qujsh",
+            "email": "ningmingqaz@126.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Qujsh\\Breaker\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Qujsh\\Breaker\\BreakerServiceProvider"
+            ]
+        }
+    }
+}
