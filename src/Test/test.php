@@ -18,10 +18,12 @@ function config($key = null, $default = null){
     return $config;
 }
 
-//失败的，需要引入
-$breaker = new \Qujsh\Breaker\Service\Breaker();
-$result = $breaker->handle(new \Qujsh\Breaker\Test\BreakerServiceTest());
+echo config('breaker.default.attempts');
 
-var_dump($result);
+//失败的，需要引入
+//$breaker = new \Qujsh\Breaker\Service\Breaker();
+//$result = $breaker->handle(new \Qujsh\Breaker\Test\BreakerServiceTest());
+//
+//var_dump($result);
 
 
