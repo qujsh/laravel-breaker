@@ -19,7 +19,9 @@ function config($key = null, $default = null){
 }
 
 //失败的，需要引入
-$breaker = new \Qujsh\Breaker\Service\Breaker(new \Qujsh\Breaker\Test\BreakerServiceTest());
-var_dump($breaker);
+$breaker = new \Qujsh\Breaker\Service\Breaker();
+$result = $breaker->handle(new \Qujsh\Breaker\Test\BreakerServiceTest());
+
+var_dump($result);
 
 

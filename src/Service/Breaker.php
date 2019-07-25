@@ -3,7 +3,6 @@
 namespace Qujsh\Breaker\Service;
 
 use Qujsh\Breaker\IService\BreakerServiceInterface;
-use Illuminate\Config\Repository as Config;
 
 class Breaker {
 
@@ -19,14 +18,12 @@ class Breaker {
     //缓存key值，用来做 半开状态开启时间戳计数
     private $circuit_halfopen;
 
-    public function __construct(BreakerServiceInterface $breaker, $mode = 'default')
+    public function __construct($mode = 'default')
     {
         $this->attempts = config("breaker.$mode.attempts");
         $this->interval = config("breaker.$mode.interval");
         $this->circuit_key = 'circuit_'.$mode;
         $this->circuit_halfopen = 'circuit_halfopen_'.$mode;
-
-        return $this->handle($breaker);
     }
 
     //执行熔断器
