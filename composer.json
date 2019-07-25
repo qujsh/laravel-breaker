@@ -1,6 +1,5 @@
 {
     "name": "qujsh/laravel-breaker",
-    "type": "composer-plugin",
     "keywords": [
         "qujsh",
         "laravel",
