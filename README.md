@@ -61,6 +61,7 @@ return [
     ],
 
     //multi array with diff key should be defined over there
+    
     'state_open' => 1,              //breaker state open
     'state_halfopen' => 2,          //breaker state halfopen
     'state_close' => 3,             //breaker state close, default
