@@ -15,6 +15,10 @@ class BreakerServiceProvider extends ServiceProvider{
             __DIR__.'/Config/breaker.php' => config_path('breaker.php'),
         ], 'config');
 
+        $this->commands([
+            Qujsh\Breaker\Command\SetBreakerHalfopen::class
+        ]);
+
     }
 
 }

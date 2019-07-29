@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Qujsh\Breaker\Command;
 
 use Illuminate\Console\Command;
 
