@@ -16,7 +16,7 @@ class BreakerServiceProvider extends ServiceProvider{
         ], 'config');
 
         $this->commands([
-            Qujsh\Breaker\Command\SetBreakerHalfopen::class
+            Command\SetBreakerHalfopen::class
         ]);
 
     }
