@@ -15,34 +15,39 @@ class SetBreakerHalfopen extends Command
     // 最终执行的方法
     public function handle()
     {
-        // 在命令行打印一行信息
-        $this->info("开始...");
+        $cmd = system("ps -ef | grep 'artisan breaker:set-halfopen' | grep -v grep | wc -l");
 
-        $config = config('breaker');
-        while (true){
+        if ($cmd < 2 ){         //如果 执行这儿的脚本命令，那么默认 cmd == 1，
+            // 在命令行打印一行信息
+            $this->info("开始...");
 
-            //因为 可以根据配置文件做多service 不同情景使用，所以 做循环使用
-            foreach ($config as $key => $value){
-                if (is_array($value)){
+            $config = config('breaker');
+            while (true){
 
-                    $circuit_key = 'circuit_'.$key;
-                    $circuit_halfopen = 'circuit_halfopen_'.$key;
-                    $attempts = $value['attempts'];
+                //因为 可以根据配置文件做多service 不同情景使用，所以 做循环使用
+                foreach ($config as $key => $value){
+                    if (is_array($value)){
 
-                    $time = \Cache::get($circuit_halfopen);
-                    if ($time && $time<=time()){
-                        \Cache::forever($circuit_key, 0-$attempts);          //设置 <0 为半开状态
-                        \Cache::forget($circuit_halfopen);      //做删除，不然会一直执行下去
+                        $circuit_key = 'circuit_'.$key;
+                        $circuit_halfopen = 'circuit_halfopen_'.$key;
+                        $attempts = $value['attempts'];
+
+                        $time = \Cache::get($circuit_halfopen);
+                        if ($time && $time<=time()){
+                            \Cache::forever($circuit_key, 0-$attempts);          //设置 <0 为半开状态
+                            \Cache::forget($circuit_halfopen);      //做删除，不然会一直执行下去
+                        }
+                    }else{
+                        break;
                     }
-                }else{
-                    break;
                 }
+
+                usleep(500*1000);           //休眠500毫秒
             }
 
-            usleep(500*1000);           //休眠500毫秒
+            $this->info("执行结束...");
+        }else{
+            $this->info("命令已开启");
         }
-
-
-        $this->info("执行结束...");
     }
 }
