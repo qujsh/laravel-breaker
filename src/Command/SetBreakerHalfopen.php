@@ -10,7 +10,7 @@ class SetBreakerHalfopen extends Command
     protected $signature = 'breaker:set-halfopen';
 
     // 命令的描述
-    protected $description = 'set breaker halfopen';
+    protected $description = 'set circuit breaker halfopen';
 
     // 最终执行的方法
     public function handle()
