@@ -34,15 +34,19 @@ class Breaker implements BreakerServiceInterface{
     {
         // TODO: Implement handle() method.
 
+        // success function to do something
+        
         //throw new \Exception('test throw');
-        return 555;
+        return 'handle';
     }
 
     public function fall()
     {
         // TODO: Implement fall() method.
 
-        return 666;
+        //fall function to do, when handle() is fail 
+
+        return 'fall';
     }
 }
 

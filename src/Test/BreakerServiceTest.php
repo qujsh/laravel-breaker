@@ -11,14 +11,14 @@ class BreakerServiceTest implements BreakerServiceInterface
     {
         // TODO: Implement handle() method.
 
-        echo 'handle';
+        return 'handle';
     }
 
     public function fall()
     {
         // TODO: Implement fall() method.
 
-        echo 'fallback';
+        return 'fallback';
     }
 }
 
